@@ -23,3 +23,26 @@ This is a robust end-to-end (E2E) automation testing framework built with:
 ├── allure-report/          # Allure HTML reports (generated)
 ├── playwright.config.ts    # Playwright test configuration
 └── cucumber.json           # Cucumber + Allure configuration
+
+
+---
+
+## 🚀 Getting Started
+
+### 1. **Install dependencies**
+
+```bash
+npm install
+
+## Run all feature files:
+npx cucumber-js
+
+## Run specific feature file:
+npx cucumber-js features/your-feature-file.feature
+
+## Run with tag filter:
+npx cucumber-js --tags "@regression"
+
+## View Allure Report
+### Generate and open the Allure HTML report:
+npm run allure:report
