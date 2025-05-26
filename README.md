@@ -34,7 +34,7 @@ This is a robust end-to-end (E2E) automation testing framework built with:
 ```bash
 npm install
 
-## Run all feature files:
+### 2. **Run all feature files:**
 npx cucumber-js
 
 ## Run specific feature file:
