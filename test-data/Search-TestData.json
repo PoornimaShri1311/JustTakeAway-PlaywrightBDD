@@ -1,0 +1,18 @@
+{
+    "searchScenarios": [
+      {
+        "destination": "Goa",
+        "dateFormat": "Day - Date - Month",
+        "adults": 2,
+        "children": 1,
+        "rooms": 1
+      },
+      {
+        "destination": "Goa",
+        "dateFormat": "Day - Date - Month",
+        "adults": 2,
+        "children": 1,
+        "rooms": 1
+      }
+    ]
+  }

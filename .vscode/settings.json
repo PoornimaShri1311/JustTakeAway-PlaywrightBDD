@@ -1,0 +1,10 @@
+{
+    "cucumberautocomplete.steps": [
+      "step-defs/*.ts"
+    ],
+    "cucumberautocomplete.syncfeatures": "features/**/*.feature",
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.smartSnippets": true,
+    "cucumberautocomplete.stepsInvariants": true,
+    "editor.multiCursorModifier": "alt"
+  }
