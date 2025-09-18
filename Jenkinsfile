@@ -9,7 +9,7 @@ pipeline {
 
     options {
         timestamps()                        // adds timestamps to console output
-        ansiColor('xterm')                  // colored console output
+        // ansiColor('xterm')                  // colored console output
     }
 
     stages {
