@@ -27,7 +27,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Node.js dependencies...'
-                sh 'npm install'
+                sh 'docker run --rm -v $PWD:/app -w /app node:18 npm install'
             }
         }
 
