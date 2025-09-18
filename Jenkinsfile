@@ -1,20 +1,18 @@
 pipeline {
     agent {
         docker { 
-            image 'node:18'          // Use official Node.js Docker image
-            args '-u root:root'      // run as root to avoid permission issues
+            image 'node:18'
+            args '-u root:root'
         }
     }
 
     environment {
-        NODE_VERSION = '18'          // Node version you want to use
-        BROWSER = 'chromium'         // default browser; or 'webkit', 'firefox'
-        HEADLESS = 'true'            // run headless by default
+        BROWSER = 'chromium'
+        HEADLESS = 'true'
     }
 
     options {
-        timestamps()                 // adds timestamps to console output
-        // ansiColor('xterm')         // colored console output (requires plugin)
+        timestamps()
     }
 
     stages {
@@ -27,21 +25,21 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Node.js dependencies...'
-                sh 'docker run --rm -v $PWD:/app -w /app node:18 npm install'
+                sh 'npm install'
             }
         }
 
         stage('Compile TypeScript') {
             steps {
                 echo 'Compiling TypeScript...'
-                sh 'docker run --rm -v $PWD:/app -w /app node:18 npx tsc'
+                sh 'npx tsc'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo "Running Cucumber tests on browser: ${BROWSER}"
-                sh 'docker run --rm -v $PWD:/app -w /app node:18 npx cucumber-js'
+                sh 'npx cucumber-js'
             }
         }
 
@@ -53,23 +51,14 @@ pipeline {
 
         stage('Publish Reports') {
             steps {
-                echo 'Reports (Allure or Cucumber JSON) can be published here if configured'
-                // e.g., publish HTML reports using Jenkins HTML Publisher plugin
-                // publishHTML(target: [allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'allure-report', reportFiles: 'index.html', reportName: 'Allure Report'])
+                echo 'Reports can be published here if configured'
             }
         }
     }
 
     post {
-        always {
-            echo 'Cleaning workspace...'
-            cleanWs()
-        }
-        success {
-            echo 'Tests completed successfully!'
-        }
-        failure {
-            echo 'Some tests failed. Check console output and screenshots.'
-        }
+        always { cleanWs() }
+        success { echo 'Tests completed successfully!' }
+        failure { echo 'Some tests failed.' }
     }
 }
