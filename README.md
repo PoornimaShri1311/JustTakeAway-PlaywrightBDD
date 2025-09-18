@@ -1,12 +1,12 @@
+# 🧪 Playwright BDD Automation Framework (TypeScript + Cucumber + HTML Report)
 
-# 🧪 Playwright BDD Automation Framework (TypeScript + Cucumber + Allure)
-
-A powerful, maintainable end-to-end automation framework built with:
+A robust and maintainable end-to-end automation framework built with:
 
 - 🎭 **Playwright** for browser automation  
 - 🧪 **Cucumber** for BDD-style Gherkin scenarios  
-- 🔷 **TypeScript** for robust and typed scripting  
-- 📊 **Allure Reports** for rich, visual test results
+- 🔷 **TypeScript** for typed scripting  
+- 📸 **Screenshot capture** on failure  
+- 📊 **Cucumber HTML Reports** for visual test results
 
 ---
 
@@ -19,11 +19,10 @@ project-root/
 ├── pages/                  # Page Object Models (POM)
 ├── locators/               # Reusable locator definitions
 ├── utils/                  # Utilities (e.g., date helper)
-├── tests/                  # Test runner entry point
-├── allure-results/         # Raw results for Allure
-├── allure-report/          # HTML report output
+├── screenshots/            # Screenshots captured on failure
+├── generate-report.ts      # Report generator script
 ├── playwright.config.ts    # Playwright configuration
-└── cucumber.json           # Cucumber configuration
+└── .gitignore              # Git exclusions
 ```
 
 ---
@@ -49,31 +48,26 @@ npx cucumber-js
 Run a specific feature:
 
 ```bash
-npx cucumber-js features/flight-search.feature
+npx cucumber-js features/jet-career.feature
 ```
 
 Run tests with tag:
 
 ```bash
-npx cucumber-js --tags "@regression"
+npx cucumber-js --tags "@JET-Sales-Germany"
 ```
 
 ---
 
-### 3️⃣ Generate Allure Report
+### 3️⃣ Generate HTML Report
 
-To generate and open the report:
-
-```bash
-npm run allure:report
-```
-
-Or manually:
+After running tests, generate the report:
 
 ```bash
-npx allure generate allure-results --clean -o allure-report
-npx allure open allure-report
+node generate-report.ts
 ```
+
+This will create `cucumber_report.html` with embedded screenshots for failed scenarios.
 
 ---
 
@@ -84,8 +78,7 @@ Add this to your `package.json`:
 ```json
 "scripts": {
   "test": "npx cucumber-js",
-  "allure:generate": "allure generate allure-results --clean -o allure-report",
-  "allure:report": "npm run allure:generate && allure open allure-report"
+  "report": "node generate-report.ts"
 }
 ```
 
@@ -93,13 +86,12 @@ Add this to your `package.json`:
 
 ## 🛠️ Playwright Config
 
-`playwright.config.ts` is already set for:
+`playwright.config.ts` is configured for:
 
-- Maximized browser window
 - Chromium browser
 - Headless mode off (for visual debugging)
-- Custom viewport and launch options
-- Global timeout setup (if needed)
+- Custom timeouts and viewport
+- Launch options for maximized window
 
 Example:
 
@@ -111,8 +103,23 @@ use: {
   launchOptions: {
     args: ['--start-maximized'],
   },
-  timeout: 10000  // Global timeout (10s)
+  timeout: 30000
 }
+```
+
+---
+
+## 📸 Screenshot on Failure
+
+Screenshots are automatically captured on test failure using Cucumber hooks:
+
+```ts
+After(async function (scenario) {
+  if (scenario.result?.status === Status.FAILED && this.page) {
+    const screenshot = await this.page.screenshot();
+    this.attach(screenshot, 'image/png');
+  }
+});
 ```
 
 ---
@@ -120,12 +127,12 @@ use: {
 ## 📝 Sample Feature File
 
 ```gherkin
-Feature: Flight Search
+Feature: Career Search
 
-  Scenario: Validate direct flights
-    Given I am on the flight search page
-    When I search for flights from "Mumbai" to "Delhi"
-    Then validate that the Direct Flight checkbox should be displayed as 'Checked' in the Flight Result Page
+  Scenario: Validate job search results
+    Given I am on the JET career page
+    When I search for jobs in "Germany"
+    Then I should see search results from multiple locations
 ```
 
 ---
@@ -133,33 +140,13 @@ Feature: Flight Search
 ## 🔍 Sample Step Definition
 
 ```ts
-Then("validate that the Direct Flight checkbox should be displayed as 'Checked' in the Flight Result Page", async function () {
-  await flightResultPage.shouldDisplayDirectFlightCheckBoxStatusAs("Checked");
+Then("I should see search results from multiple locations", async function () {
+  await jetCareerAssertions.assertMultipleCountriesInResults();
 });
 ```
 
 ---
 
-## 📊 Allure Report Output
-
-Allure provides:
-
-- ✅ Visual pass/fail indicators
-- 🧾 Step-by-step logs
-- 📸 Screenshots on failure
-- 🏷️ Tags and categories
-- 📁 Downloadable history
-
----
-
 ## 👨‍💻 Author
 
-**Naseem Ahmed**  
-QA Automation Specialist | Playwright • Cucumber • TypeScript • Allure
-
----
-
-## 📜 License
-
-Licensed under the **MIT License**.
-
+Poornima Shri
