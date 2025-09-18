@@ -1,15 +1,20 @@
 pipeline {
-    agent any
+    agent {
+        docker { 
+            image 'node:18'          // Use official Node.js Docker image
+            args '-u root:root'      // run as root to avoid permission issues
+        }
+    }
 
     environment {
-        NODE_VERSION = '18'                // Node version you want to use
-        BROWSER = 'chromium'               // default browser; or 'webkit' , 'firefox'
-        HEADLESS = 'true'                  // run headless by default
+        NODE_VERSION = '18'          // Node version you want to use
+        BROWSER = 'chromium'         // default browser; or 'webkit', 'firefox'
+        HEADLESS = 'true'            // run headless by default
     }
 
     options {
-        timestamps()                        // adds timestamps to console output
-        // ansiColor('xterm')                  // colored console output
+        timestamps()                 // adds timestamps to console output
+        // ansiColor('xterm')         // colored console output (requires plugin)
     }
 
     stages {
