@@ -34,14 +34,14 @@ pipeline {
         stage('Compile TypeScript') {
             steps {
                 echo 'Compiling TypeScript...'
-                sh 'npx tsc'
+                sh 'docker run --rm -v $PWD:/app -w /app node:18 npx tsc'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo "Running Cucumber tests on browser: ${BROWSER}"
-                sh 'npx cucumber-js'
+                sh 'docker run --rm -v $PWD:/app -w /app node:18 npx cucumber-js'
             }
         }
 
