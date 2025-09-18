@@ -1,0 +1,315 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "career-page-related-test-cases-background:-navigate-to-the-home-page-given-i-am-on-the-home-page-@jet-test-netherlands-scenario:-verify-search-results-has-multiple-countries-before-refinement-when-i-enter-\"test\"-in-the-job-title-search-box-and-i-click-the-search-button-then-i-should-see-search-results-from-multiple-locations-when-i-click-on-the-country-category-and-i-select-the-\"netherlands\"-checkbox-then-i-should-see-search-results-where-the-location-is-\"netherlands\"-only-@jet-sales-germany-scenario:-search-for-sales-jobs-and-refine-by-germany-when-i-click-on-search-for-job-title-text-field-and-i-select-sales-among-job-categories-and-the-sales-category-count-and-the-search-results-count-should-match-when-i-click-on-the-country-category-and-i-select-the-\"germany\"-checkbox-in-sales-page-and-the-sales-category-count-and-the-search-results-count-should-match;verify-search-results-has-multiple-countries-before-refinement",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Verify search results has multiple countries before refinement",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2461499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1379783600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I am on the Home Page",
+            "match": {
+              "location": "step-defs\\homePageStepDef.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3677196400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I enter \"Test\" in the Job Title search box",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2283521399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I click the Search button",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 385540699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should see search results from multiple locations",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 92592300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I click on the Country category",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5172243000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I select the \"Netherlands\" checkbox",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 785749199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I should see search results where the location is \"Netherlands\" only",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70721799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 905836100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 890800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 291799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@JET-Test-Netherlands",
+            "line": 5
+          },
+          {
+            "name": "@sample1",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "career-page-related-test-cases-background:-navigate-to-the-home-page-given-i-am-on-the-home-page-@jet-test-netherlands-scenario:-verify-search-results-has-multiple-countries-before-refinement-when-i-enter-\"test\"-in-the-job-title-search-box-and-i-click-the-search-button-then-i-should-see-search-results-from-multiple-locations-when-i-click-on-the-country-category-and-i-select-the-\"netherlands\"-checkbox-then-i-should-see-search-results-where-the-location-is-\"netherlands\"-only-@jet-sales-germany-scenario:-search-for-sales-jobs-and-refine-by-germany-when-i-click-on-search-for-job-title-text-field-and-i-select-sales-among-job-categories-and-the-sales-category-count-and-the-search-results-count-should-match-when-i-click-on-the-country-category-and-i-select-the-\"germany\"-checkbox-in-sales-page-and-the-sales-category-count-and-the-search-results-count-should-match;search-for-sales-jobs-and-refine-by-germany",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Search for Sales jobs and refine by Germany",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 136600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1484589899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I am on the Home Page",
+            "match": {
+              "location": "step-defs\\homePageStepDef.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3354237400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "I click on Search for Job Title text field",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2035149799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I select Sales among Job Categories",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1026187900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "the Sales Category count and the search results count should match",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4602229099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "I click on the Country category",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 578217299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "I select the \"Germany\" checkbox in Sales Page",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 768327800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the Sales Category count and the search results count should match",
+            "match": {
+              "location": "step-defs\\JETCareerPageStepDef.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 469887999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 811075400
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 293099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 266700
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@JET-Sales-Germany",
+            "line": 14
+          },
+          {
+            "name": "@sample2",
+            "line": 14
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "career-page-related-test-cases-background:-navigate-to-the-home-page-given-i-am-on-the-home-page-@jet-test-netherlands-scenario:-verify-search-results-has-multiple-countries-before-refinement-when-i-enter-\"test\"-in-the-job-title-search-box-and-i-click-the-search-button-then-i-should-see-search-results-from-multiple-locations-when-i-click-on-the-country-category-and-i-select-the-\"netherlands\"-checkbox-then-i-should-see-search-results-where-the-location-is-\"netherlands\"-only-@jet-sales-germany-scenario:-search-for-sales-jobs-and-refine-by-germany-when-i-click-on-search-for-job-title-text-field-and-i-select-sales-among-job-categories-and-the-sales-category-count-and-the-search-results-count-should-match-when-i-click-on-the-country-category-and-i-select-the-\"germany\"-checkbox-in-sales-page-and-the-sales-category-count-and-the-search-results-count-should-match",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Career Page Related Test Cases Background: Navigate to the Home Page Given I am on the Home Page @JET-Test-Netherlands Scenario: Verify search results has multiple countries before refinement When I enter \"Test\" in the Job Title search box And I click the Search button Then I should see search results from multiple locations When I click on the Country category And I select the \"Netherlands\" checkbox Then I should see search results where the location is \"Netherlands\" only @JET-Sales-Germany Scenario: Search for Sales jobs and refine by Germany When I click on Search for Job Title text field And I select Sales among Job Categories And the Sales Category count and the search results count should match When I click on the Country category And I select the \"Germany\" checkbox in Sales Page And the Sales Category count and the search results count should match",
+    "tags": [],
+    "uri": "features\\Career.feature"
+  }
+]

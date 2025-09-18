@@ -1,6 +1,7 @@
-import { Before, After, Status } from '@cucumber/cucumber';
+import { Before, After, Status, AfterStep } from '@cucumber/cucumber';
 import { chromium, firefox, webkit } from 'playwright';
 import { CustomWorld } from './custom-world';
+import { JETCareerPage } from '../pages/JETCareerPage';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -26,6 +27,8 @@ Before(async function (this: CustomWorld) {
 
   this.page.setDefaultTimeout(30000);
   this.page.setDefaultNavigationTimeout(30000);
+  // ✅ Initialize page objects
+  this.jetCareerPage = new JETCareerPage(this.page);
 });
 
 After(async function (this: CustomWorld, scenario) {
@@ -40,7 +43,7 @@ After(async function (this: CustomWorld, scenario) {
     const screenshotPath = path.join(screenshotsDir, `${sanitizedName}.png`);
     const screenshotBuffer = await this.page.screenshot({ path: screenshotPath, type: 'png' });
 
-    // Attach to Allure via this.attach
+    // Attach to Allure via this.attach if available
     await this.attach(screenshotBuffer, 'image/png');
   }
 

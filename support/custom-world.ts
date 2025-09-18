@@ -1,14 +1,15 @@
 import { Browser, Page, BrowserContext, chromium } from 'playwright';
 import { IWorldOptions, setWorldConstructor, World } from '@cucumber/cucumber';
+import { JETCareerPage } from '../pages/JETCareerPage';
+import { ITestCaseHookParameter } from '@cucumber/cucumber';
 
 export class CustomWorld extends World {
   browser: Browser | undefined;
   context: BrowserContext | undefined;
-  page: Page | undefined;
-  hotelDestination: string = "";
-  flightCheckInDate: string = "";
-  flightCheckOutDate: string = "";
-  flightDaysOut : string = "";
+  page?: Page | undefined;
+  jetCareerPage?: JETCareerPage | undefined;
+  testData?: Record<string, any>;
+  testCase?: ITestCaseHookParameter;
 
   constructor(options: IWorldOptions) {
     super(options);

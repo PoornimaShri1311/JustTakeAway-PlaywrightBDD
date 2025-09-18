@@ -1,0 +1,10 @@
+{
+  "Verify search results has multiple countries before refinement": {
+    "jobTitle": "Test",
+    "country": "Netherlands"
+  },
+  "Search for Sales jobs and refine by Germany": {
+    "category": "Sales",
+    "country": "Germany"
+  }
+}

@@ -1,8 +1,9 @@
 import { defineConfig } from '@playwright/test';
+import { PLAYWRIGHT_TIMEOUTS } from './support/constants';
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 60000, // ✅ Sets the maximum duration for each test (60 seconds)
+  timeout: PLAYWRIGHT_TIMEOUTS.TEST, // ✅ Sets the maximum duration for each test (60 seconds)
   use: {
     headless: false,
     browserName: 'chromium',
@@ -10,8 +11,8 @@ export default defineConfig({
     launchOptions: {
       args: ['--start-maximized'], // Maximizes the browser window
     },
-    actionTimeout: 15000, // ✅ Max time for actions like click, fill, etc. (15 seconds)
-    navigationTimeout: 30000, // ✅ Max time for navigations like page.goto (30 seconds)
+    actionTimeout: PLAYWRIGHT_TIMEOUTS.ACTION, // ✅ Max time for actions like click, fill, etc. (15 seconds)
+    navigationTimeout: PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT, // ✅ Max time for navigations like page.goto (30 seconds)
   },
   reporter: [['html', { open: 'always' }]],
 });
