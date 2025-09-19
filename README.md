@@ -147,6 +147,51 @@ Then("I should see search results from multiple locations", async function () {
 
 ---
 
+🔮 Future Improvements & Roadmap
+✅ Implemented / In-Progress
+
+•	Allure Reporting (in progress) → Report generation is partially integrated, pending stabilization and environment setup.
+
+•	Jenkins CI/CD Integration → Jenkins pipeline created with Jenkinsfile; runs basic jobs successfully.
+
+•	Cucumber Hooks for Setup/Teardown → Includes browser close, failure screenshot capture
+
+•	Dockerized Setup (prototype) → Jenkins pipeline with Docker agent configured.
+
+•	External Test Data Folder → test-data/ structure available; basic parameterization handled via feature files.
+
+🔮 Planned Enhancements
+
+•	External Test Data Handling (JSON)
+
+Centralized data-driven testing by reading from JSON in test-data/ .
+
+•	Parallel Execution 
+
+Supports running tests on different browsers by setting environment variables (e.g., $env:BROWSER="webkit"; npx cucumber-js). Parallel execution across multiple workers is a planned enhancement.
+
+•	Retry Mechanism for Flaky Tests
+
+Add re-run strategy in Playwright/Cucumber to stabilize tests in CI/CD pipelines.
+
+•	Tag-based Environment Config
+
+Switch dynamically between dev, qa, stage, prod via environment config mapping.
+
+•	API + UI Hybrid Testing
+
+Extend framework to validate REST APIs alongside UI flows.
+
+•	Stabilize Docker Setup
+
+Ensure framework can run headless in containers for reproducible CI runs.
+
+•	Advanced Allure Features
+
+Add history trends, environment info, categories, and custom labels.
+
+---
+
 ## 👨‍💻 Author
 
 Poornima Shri
