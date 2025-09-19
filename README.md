@@ -147,8 +147,8 @@ Then("I should see search results from multiple locations", async function () {
 
 ---
 
-🔮 Future Improvements & Roadmap
-✅ Implemented / In-Progress
+## 🔮 Future Improvements & Roadmap
+## ✅ Implemented / In-Progress
 
 •	Allure Reporting (in progress) → Report generation is partially integrated, pending stabilization and environment setup.
 
@@ -160,7 +160,7 @@ Then("I should see search results from multiple locations", async function () {
 
 •	External Test Data Folder → test-data/ structure available; basic parameterization handled via feature files.
 
-🔮 Planned Enhancements
+## 🔮 Planned Enhancements
 
 •	External Test Data Handling (JSON)
 
