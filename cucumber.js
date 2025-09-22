@@ -15,7 +15,16 @@ if (process.env.RETRIES !== undefined) {
   retryCount = parseInt(process.env.RETRIES, 10);
 }
 
-console.log('Retry count:', retryCount);
+console.log('Retry count from Command Prompt ** ', retryCount);
+
+// 3️⃣ Unique report file per worker (using process ID)
+const reportDir = path.resolve(__dirname, 'reports/json');
+if (!fs.existsSync(reportDir)) {
+  fs.mkdirSync(reportDir, { recursive: true });}
+
+const reportFile = `reports/json/cucumber_report_${process.pid}.json`;
+
+
 
 module.exports = {
   default: [
@@ -23,7 +32,7 @@ module.exports = {
     '--require step-defs/**/*.ts',
     '--require support/**/*.ts',
     '--format json:cucumber_report.json',
-    '--format progress',
+    '--format progress', 
     retryCount > 0 ? `--retry ${retryCount}` : '',
     'features/**/*.feature'
   ].filter(Boolean).join(' ')
