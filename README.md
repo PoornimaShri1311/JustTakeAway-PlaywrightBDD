@@ -62,6 +62,12 @@ Run tests with Environment Configuration:
 ```bash
 $env:ENV="qa"; $env:BROWSER="firefox"; $env:RETRIES="2"; npx cucumber-js
 ```
+
+Parallel Execution:
+
+```bash
+$env:ENV="qa"; $env:BROWSER="firefox"; $env:RETRIES="2"; npx cucumber-js --parallel 3
+```
 ---
 
 ### 3️⃣ Generate HTML Report

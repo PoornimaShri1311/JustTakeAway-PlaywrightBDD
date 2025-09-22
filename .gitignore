@@ -33,6 +33,7 @@ test-results/
 screenshots/
 videos/
 traces/
+reports/
 
 # Coverage
 coverage/
