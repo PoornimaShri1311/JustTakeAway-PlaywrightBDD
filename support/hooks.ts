@@ -32,6 +32,7 @@ Before(async function (this: CustomWorld) {
 });
 
 After(async function (this: CustomWorld, scenario) {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   if (scenario.result?.status === Status.FAILED && this.page) {
     // Save screenshot to file
     const screenshotsDir = path.resolve(process.cwd(), 'screenshots');
@@ -40,7 +41,7 @@ After(async function (this: CustomWorld, scenario) {
     }
 
     const sanitizedName = scenario.pickle.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-    const screenshotPath = path.join(screenshotsDir, `${sanitizedName}.png`);
+    const screenshotPath = path.join(screenshotsDir, `${sanitizedName}_${timestamp}.png`);
     const screenshotBuffer = await this.page.screenshot({ path: screenshotPath, type: 'png' });
 
     // Attach to Allure via this.attach if available
