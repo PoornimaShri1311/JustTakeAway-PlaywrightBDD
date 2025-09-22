@@ -57,20 +57,11 @@ Run tests with tag:
 npx cucumber-js --tags "@JET-Sales-Germany"
 ```
 
-### Environment Configuration
+Run tests with Environment Configuration:
 
-The framework supports multiple environments via JSON-based config (`test-data/testing-data.json`).  
-Default environment is **QA**. You can override it with the `ENV` environment variable:
-
-# PowerShell
+```bash
 $env:ENV="qa"; $env:BROWSER="firefox"; $env:RETRIES="2"; npx cucumber-js
-
-ENV = qa
-
-BROWSER = chromium
-
-RETRIES = value from test-data/testing-data.json (usually 1)
-
+```
 ---
 
 ### 3️⃣ Generate HTML Report
