@@ -15,4 +15,5 @@ export default defineConfig({
     navigationTimeout: PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT, // ✅ Max time for navigations like page.goto (30 seconds)
   },
   reporter: [['html', { open: 'always' }]],
+  retries: 1
 });
