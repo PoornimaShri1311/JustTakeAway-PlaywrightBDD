@@ -2,6 +2,7 @@ import { Browser, Page, BrowserContext, chromium } from 'playwright';
 import { IWorldOptions, setWorldConstructor, World } from '@cucumber/cucumber';
 import { JETCareerPage } from '../pages/JETCareerPage';
 import { ITestCaseHookParameter } from '@cucumber/cucumber';
+import { EnvConfig } from '../Utils/ConfigLoader';
 
 export class CustomWorld extends World {
   browser: Browser | undefined;
@@ -10,6 +11,7 @@ export class CustomWorld extends World {
   jetCareerPage?: JETCareerPage | undefined;
   testData?: Record<string, any>;
   testCase?: ITestCaseHookParameter;
+  envConfig!: EnvConfig; // "!" means it will be initialized in Before hook
 
   constructor(options: IWorldOptions) {
     super(options);

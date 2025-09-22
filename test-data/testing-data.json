@@ -1,5 +1,17 @@
 {
+  "qa": {
     "urls": {
       "homePage": "https://careers.justeattakeaway.com/global/en/home"
     }
+  },
+  "dev": {
+    "urls": {
+      "homePage": "****provide dev url here****"
+    }
+  },
+  "prod": {
+    "urls": {
+      "homePage": "****provide prod url here****"
+    }
   }
+}

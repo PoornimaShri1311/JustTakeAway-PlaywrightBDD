@@ -2,11 +2,14 @@ import { Before, After, Status, AfterStep } from '@cucumber/cucumber';
 import { chromium, firefox, webkit } from 'playwright';
 import { CustomWorld } from './custom-world';
 import { JETCareerPage } from '../pages/JETCareerPage';
+import { getConfig } from '../Utils/ConfigLoader';
 import * as fs from 'fs';
 import * as path from 'path';
 
 Before(async function (this: CustomWorld) {
   const browserType = process.env.BROWSER || 'chromium';
+  const env = process.env.ENV || 'qa';
+  this.envConfig = getConfig(env);
 
   switch (browserType) {
     case 'chromium':
