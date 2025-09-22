@@ -1,17 +1,20 @@
 {
-  "qa": {
-    "urls": {
-      "homePage": "https://careers.justeattakeaway.com/global/en/home"
+  "environments": {
+    "qa": {
+      "urls": {
+        "homePage": "https://careers.justeattakeaway.com/global/en/home"
+      }
+    },
+    "dev": {
+      "urls": {
+        "homePage": "****dev url****"
+      }
+    },
+    "prod": {
+      "urls": {
+        "homePage": "****prod url****"
+      }
     }
   },
-  "dev": {
-    "urls": {
-      "homePage": "****provide dev url here****"
-    }
-  },
-  "prod": {
-    "urls": {
-      "homePage": "****provide prod url here****"
-    }
-  }
+  "retryCount": 1
 }

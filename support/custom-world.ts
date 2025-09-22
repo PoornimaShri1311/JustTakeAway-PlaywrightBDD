@@ -13,6 +13,8 @@ export class CustomWorld extends World {
   testCase?: ITestCaseHookParameter;
   envConfig!: EnvConfig; // "!" means it will be initialized in Before hook
 
+  browserType?: string;
+
   constructor(options: IWorldOptions) {
     super(options);
   }

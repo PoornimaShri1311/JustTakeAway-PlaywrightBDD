@@ -62,18 +62,14 @@ npx cucumber-js --tags "@JET-Sales-Germany"
 The framework supports multiple environments via JSON-based config (`test-data/testing-data.json`).  
 Default environment is **QA**. You can override it with the `ENV` environment variable:
 
-```powershell
 # PowerShell
-$env:ENV="qa"
-$env:BROWSER="firefox"
-npx cucumber-js
-
-If no environment variable is provided, defaults are used:
+$env:ENV="qa"; $env:BROWSER="firefox"; $env:RETRIES="2"; npx cucumber-js
 
 ENV = qa
 
 BROWSER = chromium
 
+RETRIES = value from test-data/testing-data.json (usually 1)
 
 ---
 

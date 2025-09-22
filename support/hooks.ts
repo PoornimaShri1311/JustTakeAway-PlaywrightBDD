@@ -1,4 +1,4 @@
-import { Before, After, Status, AfterStep } from '@cucumber/cucumber';
+import { Before, After, Status } from '@cucumber/cucumber';
 import { chromium, firefox, webkit } from 'playwright';
 import { CustomWorld } from './custom-world';
 import { JETCareerPage } from '../pages/JETCareerPage';
@@ -7,10 +7,14 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 Before(async function (this: CustomWorld) {
-  const browserType = process.env.BROWSER || 'chromium';
+  // ✅ Default values
   const env = process.env.ENV || 'qa';
-  this.envConfig = getConfig(env);
+  const browserType = process.env.BROWSER || 'chromium';
 
+  this.envConfig = getConfig(env);
+  this.browserType = browserType;
+
+  // Launch browser
   switch (browserType) {
     case 'chromium':
       this.browser = await chromium.launch({ headless: false });
@@ -27,27 +31,23 @@ Before(async function (this: CustomWorld) {
 
   this.context = await this.browser.newContext();
   this.page = await this.context.newPage();
-
   this.page.setDefaultTimeout(30000);
   this.page.setDefaultNavigationTimeout(30000);
-  // ✅ Initialize page objects
+
+  // Initialize page objects
   this.jetCareerPage = new JETCareerPage(this.page);
 });
 
 After(async function (this: CustomWorld, scenario) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   if (scenario.result?.status === Status.FAILED && this.page) {
-    // Save screenshot to file
     const screenshotsDir = path.resolve(process.cwd(), 'screenshots');
-    if (!fs.existsSync(screenshotsDir)) {
-      fs.mkdirSync(screenshotsDir);
-    }
+    if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir);
 
     const sanitizedName = scenario.pickle.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const screenshotPath = path.join(screenshotsDir, `${sanitizedName}_${timestamp}.png`);
-    const screenshotBuffer = await this.page.screenshot({ path: screenshotPath, type: 'png' });
 
-    // Attach to Allure via this.attach if available
+    const screenshotBuffer = await this.page.screenshot({ path: screenshotPath, type: 'png' });
     await this.attach(screenshotBuffer, 'image/png');
   }
 
