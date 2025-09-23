@@ -1,4 +1,5 @@
 import { Page, Locator, expect } from '@playwright/test';
+import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 export default class BasePage {
   constructor(public page: Page) {}
@@ -9,21 +10,21 @@ export default class BasePage {
     : selectorOrLocator;
 }
 
-  public async click(elementOrLocator: string | Locator, timeout = 10000) {
+  public async click(elementOrLocator: string | Locator, timeout = PLAYWRIGHT_TIMEOUTS.ACTION) {
     const el = this.getLocator(elementOrLocator);
     await el.waitFor({ state: 'visible', timeout });
     await el.scrollIntoViewIfNeeded();
     await el.click();
   }
 
-  public async fill(locator: string, value: string, timeout = 10000) {
+  public async fill(locator: string, value: string, timeout = PLAYWRIGHT_TIMEOUTS.ACTION) {
     const el = this.getLocator(locator);
     await el.waitFor({ state: 'visible', timeout });
     await el.scrollIntoViewIfNeeded();
     await el.fill(value);
   }
 
-  public async getText(locator: string, timeout = 10000): Promise<string> {
+  public async getText(locator: string, timeout = PLAYWRIGHT_TIMEOUTS.ACTION): Promise<string> {
     const el = this.getLocator(locator);
     await el.waitFor({ state: 'visible', timeout });
     return (await el.textContent())?.trim() || '';
@@ -41,12 +42,12 @@ export default class BasePage {
     return texts;
   }
 
-  public async waitForVisible(locator: string, timeout = 10000) {
+  public async waitForVisible(locator: string, timeout = PLAYWRIGHT_TIMEOUTS.ACTION) {
     const el = this.getLocator(locator);
     await el.waitFor({ state: 'visible', timeout });
   }
 
-  public async expectVisible(locator: string, timeout = 10000) {
+  public async expectVisible(locator: string, timeout = PLAYWRIGHT_TIMEOUTS.ACTION) {
     const el = this.getLocator(locator);
     await expect(el).toBeVisible({ timeout });
 }

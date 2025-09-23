@@ -3,6 +3,7 @@ import { IWorldOptions, setWorldConstructor, World } from '@cucumber/cucumber';
 import { JETCareerPage } from '../pages/JETCareerPage';
 import { ITestCaseHookParameter } from '@cucumber/cucumber';
 import { EnvConfig } from '../support/ConfigLoader';
+import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 export class CustomWorld extends World {
   browser: Browser | undefined;
@@ -26,8 +27,8 @@ export class CustomWorld extends World {
     this.page = await this.context.newPage();
 
     // ✅ Set global timeouts here
-    this.page.setDefaultTimeout(30000); // Applies to all actions and expect
-    this.page.setDefaultNavigationTimeout(30000); // Applies to page.goto, etc.
+    this.page.setDefaultTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT); // Applies to all actions and expect
+    this.page.setDefaultNavigationTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT); // Applies to page.goto, etc.
   }
 
   async closeBrowser() {

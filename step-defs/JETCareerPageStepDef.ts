@@ -3,13 +3,14 @@ import { CustomWorld } from '../support/custom-world';
 import { JETCareerPage } from '../pages/JETCareerPage';
 import { JETCareerAssertions } from '../assertions/JETCareerAssertions';
 import { ITestCaseHookParameter } from '@cucumber/cucumber';
+import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 // Hook: initialize page before each scenario
 Before(async function (this: CustomWorld, testCase: ITestCaseHookParameter) {
   this.jetCareerPage = new JETCareerPage(this.page!);
 });
 
-setDefaultTimeout(30000); // global step timeout
+setDefaultTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT); // global step timeout
 
 
 // 🔹 Action Steps
@@ -23,17 +24,17 @@ When(/^I click the Search button$/, async function (this: CustomWorld) {
   await this.jetCareerPage!.clickSearchButton();
 });
 
-When(/^I click on the Country category$/, { timeout: 20000 }, async function (this: CustomWorld) {
+When(/^I click on the Country category$/, { timeout: PLAYWRIGHT_TIMEOUTS.PAGE_TIMEOUT }, async function (this: CustomWorld) {
   console.log(`[Step] Clicking on the Country category`);
   await this.jetCareerPage!.clickCountryCategory();
 });
 
-When(/^I select the "([^"]+)" checkbox$/, { timeout: 20000 }, async function (this: CustomWorld, country: string) {
+When(/^I select the "([^"]+)" checkbox$/, { timeout: PLAYWRIGHT_TIMEOUTS.PAGE_TIMEOUT }, async function (this: CustomWorld, country: string) {
   console.log(`[Step] Selecting country checkbox: ${country}`);
   await this.jetCareerPage!.selectCountryCheckbox(country);
 });
 
-When(/^I select the "([^"]+)" checkbox in Sales Page$/, { timeout: 20000 }, async function (this: CustomWorld, country: string) {
+When(/^I select the "([^"]+)" checkbox in Sales Page$/, { timeout: PLAYWRIGHT_TIMEOUTS.PAGE_TIMEOUT }, async function (this: CustomWorld, country: string) {
   console.log(`[Step] Selecting country checkbox in Sales Page: ${country}`);
   await this.jetCareerPage!.selectSalesCountryCheckbox(country);
 });

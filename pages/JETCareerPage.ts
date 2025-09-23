@@ -3,6 +3,7 @@ import BasePage from './BasePage';
 import { JETCareerPageLocators } from '../locators/JETCareerPageLocators';
 import { AssertionHelper } from '../assertions/AssertionHelper';
 import { TextUtils } from '../Utils/TextUtils';
+import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 export class JETCareerPage extends BasePage {
   private assertionHelper: AssertionHelper;
@@ -38,12 +39,12 @@ export class JETCareerPage extends BasePage {
 
   async selectCountryCheckbox(country: string) {
     await this.click(JETCareerPageLocators.countryCheckbox(country));
-    await this.page.waitForTimeout(500); // Allow filter to apply
+    await this.page.waitForTimeout(PLAYWRIGHT_TIMEOUTS.SHORT_TIMEOUT); // Allow filter to apply
   }
 
   async selectSalesCountryCheckbox(country: string) {
     await this.click(JETCareerPageLocators.salescountryCheckbox(country));
-    await this.page.waitForTimeout(500);
+    await this.page.waitForTimeout(PLAYWRIGHT_TIMEOUTS.SHORT_TIMEOUT);
   }
 
   async selectSalesCategory() {

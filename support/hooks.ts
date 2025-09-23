@@ -5,6 +5,7 @@ import { JETCareerPage } from '../pages/JETCareerPage';
 import { getConfig } from '../support/ConfigLoader';
 import * as fs from 'fs';
 import * as path from 'path';
+import { PLAYWRIGHT_TIMEOUTS } from './constants';
 
 Before(async function (this: CustomWorld) {
   // ✅ Default values
@@ -31,8 +32,8 @@ Before(async function (this: CustomWorld) {
 
   this.context = await this.browser.newContext();
   this.page = await this.context.newPage();
-  this.page.setDefaultTimeout(30000);
-  this.page.setDefaultNavigationTimeout(30000);
+  this.page.setDefaultTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT);
+  this.page.setDefaultNavigationTimeout(PLAYWRIGHT_TIMEOUTS.TEST);
 
   // Initialize page objects
   this.jetCareerPage = new JETCareerPage(this.page);
