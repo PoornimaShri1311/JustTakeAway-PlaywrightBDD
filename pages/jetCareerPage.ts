@@ -3,7 +3,7 @@ import { jetCareerPageLocators } from '../locators/jetCareerPageLocators';
 import { assertionHelper } from '../assertions/assertionHelper';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 import basePage from './basePage';
-import { textUtils } from '../Utils/textUtils';
+import { textUtils } from '../utils/textUtils';
 import logger from '../support/logger';
 
 
