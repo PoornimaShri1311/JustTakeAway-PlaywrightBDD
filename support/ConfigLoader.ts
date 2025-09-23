@@ -9,8 +9,10 @@ export type EnvConfig = {
   [key: string]: any;
 };
 
-export function getConfig(env: string = 'qa'): EnvConfig {
+export function getConfig(env?: string): EnvConfig {
+  const envToUse = env || process.env.ENV || 'qa'; 
   const filePath = path.resolve(__dirname, '../test-data/testingData.json');
+
   if (!fs.existsSync(filePath)) {
     throw new Error(`Test data file not found: ${filePath}`);
   }
@@ -18,10 +20,10 @@ export function getConfig(env: string = 'qa'): EnvConfig {
   const rawData = fs.readFileSync(filePath, 'utf-8');
   const allData = JSON.parse(rawData);
 
-  if (!allData.environments || !allData.environments[env]) {
-    throw new Error(`No configuration found for environment: ${env}`);
+  if (!allData.environments || !allData.environments[envToUse]) {
+    throw new Error(`No configuration found for environment: ${envToUse}`);
   }
 
-  return allData.environments[env] as EnvConfig;
+  return allData.environments[envToUse] as EnvConfig;
 }
 

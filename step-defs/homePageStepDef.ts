@@ -9,8 +9,11 @@ Given(
   'I am on the Home Page',
   { timeout: PLAYWRIGHT_TIMEOUTS.PAGE_TIMEOUT },
   async function (this: customWorld) {
-    homePageInstance = new homePage(this.page!, this.envConfig.envName);
+    // constructor reads process.env.ENV automatically
+    homePageInstance = new homePage(this.page!);
     await homePageInstance.gotoHomePage();
+
+    console.log('Current ENV:', process.env.ENV); 
+    console.log('Home Page URL:', homePageInstance['config'].urls.homePage); 
   }
 );
-
