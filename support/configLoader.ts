@@ -6,7 +6,7 @@ export type EnvConfig = {
     homePage: string;
     [key: string]: string;
   };
-  [key: string]: any;
+  [key: string]: unknown;  // unknown is safer than any
 };
 
 export function getConfig(env?: string): EnvConfig {

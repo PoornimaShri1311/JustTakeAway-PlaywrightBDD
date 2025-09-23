@@ -5,15 +5,19 @@ import { ITestCaseHookParameter } from '@cucumber/cucumber';
 import { EnvConfig } from './configLoader';
 import { PLAYWRIGHT_TIMEOUTS } from './constants';
 
+//For type Safety
+export interface TestData {
+  [key: string]: string | number | boolean | TestData | TestData[];
+}
+
 export class customWorld extends World {
   browser: Browser | undefined;
   context: BrowserContext | undefined;
   page?: Page | undefined;
   jetCareerPage?: jetCareerPage | undefined;
-  testData?: Record<string, any>;
+  testData?: TestData;          // type-safe
   testCase?: ITestCaseHookParameter;
   envConfig!: EnvConfig; // "!" means it will be initialized in Before hook
-
   browserType?: string;
 
   constructor(options: IWorldOptions) {
