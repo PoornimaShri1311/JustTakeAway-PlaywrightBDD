@@ -14,15 +14,21 @@ A robust and maintainable end-to-end automation framework built with:
 
 ```
 project-root/
-├── features/                # Gherkin feature files
-├── step-defs/              # Step definitions for features
-├── pages/                  # Page Object Models (POM)
+├── assertions/             # Assertion validations
+├── features/               # Gherkin feature files
 ├── locators/               # Reusable locator definitions
+├── pages/                  # Page Object Models (POM)
+├── step-defs/              # Step definitions for features
+├── support/                # Hooks
 ├── utils/                  # Utilities (e.g., date helper)
 ├── screenshots/            # Screenshots captured on failure
 ├── generate-report.ts      # Report generator script
+├── cucumber.js             # Cucumber Configurations
 ├── playwright.config.ts    # Playwright configuration
+├── Jenkinsfile             # Jenkins pipeline
 └── .gitignore              # Git exclusions
+
+
 ```
 
 ---
@@ -79,19 +85,6 @@ node generate-report.ts
 ```
 
 This will create `cucumber_report.html` with embedded screenshots for failed scenarios.
-
----
-
-## ⚙️ Add Custom Scripts (optional)
-
-Add this to your `package.json`:
-
-```json
-"scripts": {
-  "test": "npx cucumber-js",
-  "report": "node generate-report.ts"
-}
-```
 
 ---
 
