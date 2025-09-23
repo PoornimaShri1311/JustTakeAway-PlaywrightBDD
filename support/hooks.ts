@@ -2,7 +2,7 @@ import { Before, After, Status } from '@cucumber/cucumber';
 import { chromium, firefox, webkit } from 'playwright';
 import { CustomWorld } from './custom-world';
 import { JETCareerPage } from '../pages/JETCareerPage';
-import { getConfig } from '../Utils/ConfigLoader';
+import { getConfig } from '../support/ConfigLoader';
 import * as fs from 'fs';
 import * as path from 'path';
 

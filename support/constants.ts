@@ -1,4 +1,3 @@
-// config/constants.ts
 export const PLAYWRIGHT_TIMEOUTS = {
   TEST: 60000,
   ACTION: 15000,

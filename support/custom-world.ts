@@ -2,7 +2,7 @@ import { Browser, Page, BrowserContext, chromium } from 'playwright';
 import { IWorldOptions, setWorldConstructor, World } from '@cucumber/cucumber';
 import { JETCareerPage } from '../pages/JETCareerPage';
 import { ITestCaseHookParameter } from '@cucumber/cucumber';
-import { EnvConfig } from '../Utils/ConfigLoader';
+import { EnvConfig } from '../support/ConfigLoader';
 
 export class CustomWorld extends World {
   browser: Browser | undefined;
