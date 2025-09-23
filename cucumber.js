@@ -4,7 +4,7 @@ const path = require('path');
 let retryCount = 1; // default retry count
 
 // 1️⃣ Read default from JSON
-const configPath = path.resolve(__dirname, '../test-data/testing-data.json'); 
+const configPath = path.resolve(__dirname, '../test-data/testingData.json'); 
 if (fs.existsSync(configPath)) {
   const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
   retryCount = config.retryCount ?? retryCount;

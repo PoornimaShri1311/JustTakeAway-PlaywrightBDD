@@ -10,7 +10,7 @@ export type EnvConfig = {
 };
 
 export function getConfig(env: string = 'qa'): EnvConfig {
-  const filePath = path.resolve(__dirname, '../test-data/testing-data.json');
+  const filePath = path.resolve(__dirname, '../test-data/testingData.json');
   if (!fs.existsSync(filePath)) {
     throw new Error(`Test data file not found: ${filePath}`);
   }

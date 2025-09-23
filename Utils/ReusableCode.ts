@@ -1,6 +1,6 @@
 import { addDays, format, parse } from 'date-fns';
 import { Page, expect, Locator } from '@playwright/test';
-import { LocatorInfo } from './locator-types';
+import { LocatorInfo } from './locatorTypes';
 
 export class ReusableCode {
   page: Page;

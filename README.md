@@ -22,7 +22,7 @@ project-root/
 ├── support/                # Hooks
 ├── utils/                  # Utilities (e.g., date helper)
 ├── screenshots/            # Screenshots captured on failure
-├── generate-report.ts      # Report generator script
+├── generateReport.ts       # Report generator script
 ├── cucumber.js             # Cucumber Configurations
 ├── playwright.config.ts    # Playwright configuration
 ├── Jenkinsfile             # Jenkins pipeline
@@ -81,7 +81,7 @@ $env:ENV="qa"; $env:BROWSER="firefox"; $env:RETRIES="2"; npx cucumber-js --paral
 After running tests, generate the report:
 
 ```bash
-node generate-report.ts
+node generateReport.ts
 ```
 
 This will create `cucumber_report.html` with embedded screenshots for failed scenarios.

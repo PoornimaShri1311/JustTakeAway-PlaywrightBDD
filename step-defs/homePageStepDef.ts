@@ -1,6 +1,6 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { CustomWorld } from '../support/custom-world';
-import { HomePage } from '../pages/HomePage';
+import { CustomWorld } from '../support/customWorld';
+import { HomePage } from '../pages/homePage';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 let homePage: HomePage;

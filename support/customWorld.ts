@@ -1,9 +1,9 @@
 import { Browser, Page, BrowserContext, chromium } from 'playwright';
 import { IWorldOptions, setWorldConstructor, World } from '@cucumber/cucumber';
-import { JETCareerPage } from '../pages/JETCareerPage';
+import { JETCareerPage } from '../pages/jetCareerPage';
 import { ITestCaseHookParameter } from '@cucumber/cucumber';
-import { EnvConfig } from '../support/ConfigLoader';
-import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
+import { EnvConfig } from './configLoader';
+import { PLAYWRIGHT_TIMEOUTS } from './constants';
 
 export class CustomWorld extends World {
   browser: Browser | undefined;

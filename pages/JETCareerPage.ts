@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test';
-import BasePage from './BasePage';
-import { JETCareerPageLocators } from '../locators/JETCareerPageLocators';
-import { AssertionHelper } from '../assertions/AssertionHelper';
-import { TextUtils } from '../Utils/TextUtils';
+import BasePage from './basePage';
+import { JETCareerPageLocators } from '../locators/jetCareerPageLocators';
+import { AssertionHelper } from '../assertions/assertionHelper';
+import { TextUtils } from '../Utils/textUtils';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 export class JETCareerPage extends BasePage {

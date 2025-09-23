@@ -1,7 +1,7 @@
 import { Given, When, Then, Before, setDefaultTimeout } from '@cucumber/cucumber';
-import { CustomWorld } from '../support/custom-world';
-import { JETCareerPage } from '../pages/JETCareerPage';
-import { JETCareerAssertions } from '../assertions/JETCareerAssertions';
+import { CustomWorld } from '../support/customWorld';
+import { JETCareerPage } from '../pages/jetCareerPage';
+import { JETCareerAssertions } from '../assertions/jetCareerAssertions';
 import { ITestCaseHookParameter } from '@cucumber/cucumber';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 

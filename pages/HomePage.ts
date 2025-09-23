@@ -1,5 +1,5 @@
 import { Page, expect as pwExpect } from '@playwright/test';
-import testData from '../test-data/testing-data.json';
+import testData from '../test-data/testingData.json';
 
 
 export class HomePage {

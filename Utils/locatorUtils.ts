@@ -1,5 +1,5 @@
 import { Page, Locator } from 'playwright';
-import type { LocatorInfo } from './locator-types';
+import type { LocatorInfo } from './locatorTypes';
 
 export function getLocator(page: Page, locatorInfo: LocatorInfo): Locator {
   switch (locatorInfo.type) {

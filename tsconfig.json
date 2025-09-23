@@ -8,6 +8,7 @@
     "outDir": "dist",
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
   },
   "include": ["**/*.ts", "**/*.json"]}

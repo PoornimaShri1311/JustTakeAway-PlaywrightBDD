@@ -1,8 +1,8 @@
 import { Before, After, Status } from '@cucumber/cucumber';
 import { chromium, firefox, webkit } from 'playwright';
-import { CustomWorld } from './custom-world';
-import { JETCareerPage } from '../pages/JETCareerPage';
-import { getConfig } from '../support/ConfigLoader';
+import { CustomWorld } from './customWorld';
+import { JETCareerPage } from '../pages/jetCareerPage';
+import { getConfig } from './configLoader';
 import * as fs from 'fs';
 import * as path from 'path';
 import { PLAYWRIGHT_TIMEOUTS } from './constants';

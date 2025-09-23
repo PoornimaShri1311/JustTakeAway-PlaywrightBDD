@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { JETCareerPage } from '../pages/JETCareerPage';
+import { JETCareerPage } from '../pages/jetCareerPage';
 
 export class JETCareerAssertions {
   constructor(private jetCareerPage: JETCareerPage) {}
