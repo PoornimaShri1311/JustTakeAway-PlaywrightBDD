@@ -1,7 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
-export default class BasePage {
+export default class basePage {
   constructor(public page: Page) {}
 
   protected getLocator(selectorOrLocator: string | Locator): Locator {

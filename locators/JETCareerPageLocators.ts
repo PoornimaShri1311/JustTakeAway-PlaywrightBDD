@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 
-export const JETCareerPageLocators = {
+export const jetCareerPageLocators = {
   jobTitleInput: '//input[@id="typehead"]',
   searchButton: '//button[@id="ph-search-backdrop"]',
   jobListContainer: 'div[data-ph-at-id="jobs-list"]',

@@ -1,12 +1,14 @@
-import { Page, expect as pwExpect } from '@playwright/test';
-import testData from '../test-data/testingData.json';
+import { Page } from '@playwright/test';
+import { getConfig, EnvConfig } from '../support/configLoader';
 
+export class homePage { // still camelCase
+  private config: EnvConfig;
 
-export class HomePage {
-
-  constructor(private page: Page) {}
+  constructor(private page: Page, env: string = 'qa') {
+    this.config = getConfig(env);
+  }
 
   async gotoHomePage() {
-    await this.page.goto(testData.urls.homePage);
+    await this.page.goto(this.config.urls.homePage);
   }
 }

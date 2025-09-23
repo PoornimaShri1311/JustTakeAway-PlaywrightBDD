@@ -1,13 +1,13 @@
 import { Before, After, Status } from '@cucumber/cucumber';
 import { chromium, firefox, webkit } from 'playwright';
-import { CustomWorld } from './customWorld';
-import { JETCareerPage } from '../pages/jetCareerPage';
+import { customWorld } from './customWorld';
+import { jetCareerPage } from '../pages/jetCareerPage';
 import { getConfig } from './configLoader';
 import * as fs from 'fs';
 import * as path from 'path';
 import { PLAYWRIGHT_TIMEOUTS } from './constants';
 
-Before(async function (this: CustomWorld) {
+Before(async function (this: customWorld) {
   // ✅ Default values
   const env = process.env.ENV || 'qa';
   const browserType = process.env.BROWSER || 'chromium';
@@ -36,10 +36,10 @@ Before(async function (this: CustomWorld) {
   this.page.setDefaultNavigationTimeout(PLAYWRIGHT_TIMEOUTS.TEST);
 
   // Initialize page objects
-  this.jetCareerPage = new JETCareerPage(this.page);
+  this.jetCareerPage = new jetCareerPage(this.page);
 });
 
-After(async function (this: CustomWorld, scenario) {
+After(async function (this: customWorld, scenario) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   if (scenario.result?.status === Status.FAILED && this.page) {
     const screenshotsDir = path.resolve(process.cwd(), 'screenshots');

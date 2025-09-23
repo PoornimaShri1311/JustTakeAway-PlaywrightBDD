@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
-import { JETCareerPage } from '../pages/jetCareerPage';
+import { jetCareerPage } from '../pages/jetCareerPage';
 
-export class JETCareerAssertions {
-  constructor(private jetCareerPage: JETCareerPage) {}
+export class jetCareerAssertions {
+  constructor(private jetCareerPage: jetCareerPage) {}
 
   /**
    * ✅ Assert that multiple unique countries are shown in search results

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "test": "rm -rf allure-results allure-report && npx cucumber-js --format ./allure-reporter.js",
     "allure:generate": "allure generate allure-results --clean",
     "allure:open": "allure open allure-report",

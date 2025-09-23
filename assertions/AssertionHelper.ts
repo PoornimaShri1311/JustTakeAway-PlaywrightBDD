@@ -1,7 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
-export class AssertionHelper {
+export class assertionHelper {
   private page: Page;
 
   constructor(page: Page) {

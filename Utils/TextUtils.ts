@@ -1,4 +1,4 @@
-export class TextUtils {
+export class textUtils {
   static removePrefix(text: string, prefix: string): string {
     return text.replace(prefix, '').trim();
   }
