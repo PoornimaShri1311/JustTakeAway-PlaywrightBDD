@@ -41,16 +41,37 @@ Before(async function (this: customWorld) {
 
 After(async function (this: customWorld, scenario) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  if (scenario.result?.status === Status.FAILED && this.page) {
+
+  // Take screenshot if scenario failed
+  if (scenario.result?.status === Status.FAILED && this.page && !this.page.isClosed()) {
     const screenshotsDir = path.resolve(process.cwd(), 'screenshots');
     if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir);
 
     const sanitizedName = scenario.pickle.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const screenshotPath = path.join(screenshotsDir, `${sanitizedName}_${timestamp}.png`);
 
-    const screenshotBuffer = await this.page.screenshot({ path: screenshotPath, type: 'png' });
-    await this.attach(screenshotBuffer, 'image/png');
+    try {
+      const screenshotBuffer = await this.page.screenshot({ path: screenshotPath, type: 'png' });
+      await this.attach(screenshotBuffer, 'image/png');
+    } catch (err: unknown) {
+      // Narrow unknown to Error
+      if (err instanceof Error) {
+        console.warn('Screenshot failed:', err.message);
+      } else {
+        console.warn('Screenshot failed:', err);
+      }
+    }
   }
 
-  await this.browser?.close();
+  // Close browser after taking screenshots
+  try {
+    await this.browser?.close();
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.warn('Browser close failed:', err.message);
+    } else {
+      console.warn('Browser close failed:', err);
+    }
+  }
 });
+

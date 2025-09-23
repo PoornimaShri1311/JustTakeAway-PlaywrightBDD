@@ -1,11 +1,15 @@
-import { After, Before, Status } from '@cucumber/cucumber';
-import { writeFileSync } from 'fs';
-import { join } from 'path';
+import { After, Status } from '@cucumber/cucumber';
 
-// Attach screenshots on failure for Allure reports
 After(async function (scenario) {
-  if (scenario.result?.status === Status.FAILED && this.page) {
-    const screenshot = await this.page.screenshot();
-    this.attach(screenshot, 'image/png');
+  if (scenario.result?.status === Status.FAILED) {
+    // Make sure page exists and is open
+    if (this.page && !this.page.isClosed()) {
+      try {
+        const screenshot = await this.page.screenshot({ type: 'png' });
+        await this.attach(screenshot, 'image/png'); // attach to Allure
+      } catch (err: unknown) {
+        console.warn('Allure screenshot failed:', err instanceof Error ? err.message : err);
+      }
+    }
   }
 });
