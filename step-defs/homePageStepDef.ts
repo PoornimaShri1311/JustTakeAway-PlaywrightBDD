@@ -12,8 +12,5 @@ Given(
     // constructor reads process.env.ENV automatically
     homePageInstance = new homePage(this.page!);
     await homePageInstance.gotoHomePage();
-
-    console.log('Current ENV:', process.env.ENV); 
-    console.log('Home Page URL:', homePageInstance['config'].urls.homePage); 
   }
 );

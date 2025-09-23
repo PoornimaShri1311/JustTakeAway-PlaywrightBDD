@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { jetCareerPage } from '../pages/jetCareerPage';
+import logger from '../support/logger';
 
 export class jetCareerAssertions {
   constructor(private jetCareerPage: jetCareerPage) {}
@@ -24,7 +25,7 @@ export class jetCareerAssertions {
     const uniqueCountries = new Set(countries);
 
     expect(uniqueCountries.size).toBeGreaterThan(1);
-    console.log(`✅ Multiple countries found: ${Array.from(uniqueCountries).join(', ')}`);
+    logger.info(`Multiple countries found: ${Array.from(uniqueCountries).join(', ')}`);
   }
 
   /**
@@ -50,7 +51,7 @@ export class jetCareerAssertions {
     expect(uniqueCountries.size).toBe(1);
     expect(uniqueCountries.has(expectedCountry)).toBeTruthy();
 
-    console.log(`✅ All job locations are from "${expectedCountry}"`);
+    logger.info(`All job locations are from "${expectedCountry}"`);
   }
 
   /**

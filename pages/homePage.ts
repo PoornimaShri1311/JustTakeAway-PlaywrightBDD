@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { getConfig, EnvConfig } from '../support/configLoader';
+import logger from '../support/logger';
 
 export class homePage { // still camelCase
   private config: EnvConfig;
@@ -9,7 +10,7 @@ export class homePage { // still camelCase
   }
 
   async gotoHomePage() {
-    console.log('Launching URL:', this.config.urls.homePage); 
+    logger.info({ url: this.config.urls.homePage }, 'Launching URL');
     await this.page.goto(this.config.urls.homePage);
   }
 }

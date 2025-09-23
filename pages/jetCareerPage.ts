@@ -4,6 +4,7 @@ import { assertionHelper } from '../assertions/assertionHelper';
 import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 import basePage from './basePage';
 import { textUtils } from '../Utils/textUtils';
+import logger from '../support/logger';
 
 
 export class jetCareerPage extends basePage {
@@ -54,7 +55,6 @@ export class jetCareerPage extends basePage {
 
   async verifySalesCategorySelected() {
     await this.assertionHelper.assertChecked(jetCareerPageLocators.salesCategoryInput);
-    console.log('✅ Sales category is correctly selected.');
   }
 
   async getSelectedCategory(): Promise<string> {
@@ -79,7 +79,7 @@ export class jetCareerPage extends basePage {
     if (salesCount !== resultsCount) {
       throw new Error(`Mismatch: Sales ${salesCount} != Results ${resultsCount}`);
     }
-    console.log(`✅ Counts match: ${salesCount}`);
+    logger.info(` Counts match: ${salesCount}`);
   }
 
   async getAllJobLocations(): Promise<string[]> {
@@ -112,7 +112,7 @@ export class jetCareerPage extends basePage {
     const locations = await this.getAllJobLocations();
     const countries = Array.from(new Set(locations.map(loc => loc.split(',').pop()?.trim())));
     if (countries.length <= 1) throw new Error(`Only one unique country found: ${countries[0]}`);
-    console.log(`✅ Multiple countries found: ${countries.join(', ')}`);
+    logger.info(`Multiple countries found: ${countries.join(', ')}`);
   }
 }
 
