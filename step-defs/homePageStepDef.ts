@@ -5,6 +5,10 @@ import { PLAYWRIGHT_TIMEOUTS } from '../support/constants';
 
 let homePageInstance: homePage;
 
+/**
+ * Step: Navigate to the Home Page
+ * @param this customWorld instance
+ */
 Given(
   'I am on the Home Page',
   { timeout: PLAYWRIGHT_TIMEOUTS.PAGE_TIMEOUT },

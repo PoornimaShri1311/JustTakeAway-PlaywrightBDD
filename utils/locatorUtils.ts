@@ -1,5 +1,8 @@
 import { Page, Locator } from 'playwright';
 
+/**
+ * Supported ARIA roles for Playwright's getByRole method.
+ */
 export type AriaRole =
   | "alert" | "alertdialog" | "application" | "article" | "banner"
   | "blockquote" | "button" | "caption" | "cell" | "checkbox"
@@ -15,6 +18,9 @@ export type AriaRole =
   | "tabpanel" | "term" | "textbox" | "timer" | "toolbar" | "tooltip"
   | "tree" | "treegrid" | "treeitem";
 
+/**
+ * LocatorInfo describes different locator strategies for Playwright.
+ */
 export type LocatorInfo =
   | { type: 'css'; value: string }
   | { type: 'xpath'; value: string }
@@ -23,7 +29,12 @@ export type LocatorInfo =
   | { type: 'text'; value: string }
   | { type: 'testID'; value: string };
 
-
+/**
+ * Returns a Playwright Locator based on the provided LocatorInfo.
+ * @param page Playwright Page instance
+ * @param locatorInfo LocatorInfo object
+ * @returns Playwright Locator
+ */
 export function getLocator(page: Page, locatorInfo: LocatorInfo): Locator {
   switch (locatorInfo.type) {
     case 'css':

@@ -7,7 +7,10 @@ import { PLAYWRIGHT_TIMEOUTS } from './constants';
 import * as fs from 'fs';
 import * as path from 'path';
 import logger from '../support/logger';
-
+/**
+ * Cucumber Before hook to set up browser, context, and page for each scenario.
+ * Initializes the correct browser type and attaches the page object to the world.
+ */
 Before(async function (this: customWorld) {
   const env = process.env.ENV || 'qa';
   const browserType = process.env.BROWSER || 'chromium';
@@ -37,6 +40,10 @@ Before(async function (this: customWorld) {
   this.jetCareerPage = new jetCareerPage(this.page);
 });
 
+/**
+ * Cucumber After hook to handle screenshot capture on failure and browser teardown.
+ * Attaches screenshots to the report if a scenario fails.
+ */
 After(async function (this: customWorld, scenario) {
   const screenshotsDir = path.resolve(process.cwd(), 'screenshots');
   if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir);

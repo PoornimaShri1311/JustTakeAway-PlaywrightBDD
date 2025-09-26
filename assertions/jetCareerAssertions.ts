@@ -2,11 +2,19 @@ import { expect } from '@playwright/test';
 import { jetCareerPage } from '../pages/jetCareerPage';
 import logger from '../support/logger';
 
+/**
+ * Assertion helper for Jet Career Page.
+ */
 export class jetCareerAssertions {
+  /**
+   * Creates an instance of jetCareerAssertions.
+   * @param jetCareerPage jetCareerPage instance
+   */
   constructor(private jetCareerPage: jetCareerPage) {}
 
+
   /**
-   * ✅ Assert that multiple unique countries are shown in search results
+   * Asserts that multiple unique countries are shown in search results.
    */
   async assertMultipleCountriesInResults() {
     const locations = await this.jetCareerPage.getAllJobLocations();
@@ -28,19 +36,21 @@ export class jetCareerAssertions {
     logger.info(`Multiple countries found: ${Array.from(uniqueCountries).join(', ')}`);
   }
 
+
   /**
-   * ✅ Assert that all job results belong to a single expected country
+   * Asserts that all job results belong to a single expected country.
+   * @param expectedCountry The expected country name
    */
   async assertResultsFromCountry(expectedCountry: string) {
     await this.jetCareerPage.waitForJobListings();
-      const locations = await this.jetCareerPage.getAllJobLocations();
+    const locations = await this.jetCareerPage.getAllJobLocations();
 
     if (locations.length === 0) {
       throw new Error(`❌ No job listings found for "${expectedCountry}".`);
     }
 
     const countries = locations
-        .map((loc: string) => {
+      .map((loc: string) => {
         const words = loc.trim().split(/\s+/);
         return words.length > 0 ? words[words.length - 1] : '';
       })
@@ -54,8 +64,9 @@ export class jetCareerAssertions {
     logger.info(`All job locations are from "${expectedCountry}"`);
   }
 
+
   /**
-   * ✅ Assert that Sales category is selected
+   * Asserts that Sales category is selected.
    */
   async assertSalesCategorySelected() {
     await this.jetCareerPage.verifySalesCategorySelected();

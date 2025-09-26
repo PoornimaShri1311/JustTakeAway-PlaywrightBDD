@@ -10,31 +10,43 @@ export interface TestData {
   [key: string]: string | number | boolean | TestData | TestData[];
 }
 
+/**
+ * Custom World for Cucumber scenarios, providing browser, page, and test context.
+ */
 export class customWorld extends World {
   browser: Browser | undefined;
   context: BrowserContext | undefined;
   page?: Page | undefined;
   jetCareerPage?: jetCareerPage | undefined;
-  testData?: TestData;          // type-safe
+  testData?: TestData;
   testCase?: ITestCaseHookParameter;
-  envConfig!: EnvConfig; // "!" means it will be initialized in Before hook
+  envConfig!: EnvConfig;
   browserType?: string;
 
+  /**
+   * Creates an instance of customWorld.
+   * @param options Cucumber World options
+   */
   constructor(options: IWorldOptions) {
     super(options);
   }
 
-  // ✅ Call this from Before hook to initialize browser & page
+  /**
+   * Initializes the browser and page for the scenario.
+   */
   async initBrowser() {
     this.browser = await chromium.launch({ headless: false });
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
 
-    // ✅ Set global timeouts here
-    this.page.setDefaultTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT); // Applies to all actions and expect
-    this.page.setDefaultNavigationTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT); // Applies to page.goto, etc.
+    // Set global timeouts here
+    this.page.setDefaultTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT);
+    this.page.setDefaultNavigationTimeout(PLAYWRIGHT_TIMEOUTS.DEAFAULT_TIMEOUT);
   }
 
+  /**
+   * Closes the browser after the scenario.
+   */
   async closeBrowser() {
     await this.browser?.close();
   }

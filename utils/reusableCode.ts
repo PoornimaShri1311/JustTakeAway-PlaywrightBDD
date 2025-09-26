@@ -2,13 +2,28 @@ import { addDays, format, parse } from 'date-fns';
 import { Page, expect, Locator } from '@playwright/test';
 import { LocatorInfo } from './locatorTypes';
 
+/**
+ * Utility class for reusable Playwright actions and locator manipulation.
+ */
 export class reusableCode {
+  /**
+   * Playwright Page instance.
+   */
   page: Page;
 
+  /**
+   * Create a reusableCode instance.
+   * @param page Playwright Page object
+   */
   constructor(page: Page) {
     this.page = page;
   }
 
+  /**
+   * Clicks on a locator after replacing a placeholder with a value.
+   * @param locatorInfo Locator string, object, or LocatorInfo
+   * @param valueToBeReplaced Value to replace in the locator
+   */
   async clickOnReplacedLocator(
     locatorInfo: string | { name: string } | LocatorInfo,
     valueToBeReplaced: string
@@ -30,6 +45,11 @@ export class reusableCode {
     await locator.click();
   }
 
+  /**
+   * Verifies that a replaced locator element is visible.
+   * @param locatorInfo Locator string, object, or LocatorInfo
+   * @param valueToBeReplaced Value to replace in the locator
+   */
   async verifyReplacedLocatorElementIsVisible(
     locatorInfo: string | { name: string } | LocatorInfo,
     valueToBeReplaced: string
@@ -50,6 +70,12 @@ export class reusableCode {
     await expect(locator).toBeVisible();
   }
 
+  /**
+   * Replace 'XXXX' in locator value with the provided value.
+   * @param locatorInfo LocatorInfo object
+   * @param value Value to replace
+   * @returns Updated LocatorInfo
+   */
   private replaceInLocator(locatorInfo: LocatorInfo, value: string): LocatorInfo {
     switch (locatorInfo.type) {
       case 'css':

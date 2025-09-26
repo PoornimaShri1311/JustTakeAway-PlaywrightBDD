@@ -1,5 +1,10 @@
 import pino from 'pino';
 
+/**
+ * Logger utility using pino for pretty, colorized, and timestamped logs.
+ *
+ * @see {@link https://getpino.io/#/}
+ */
 const logger = pino({
   transport: {
     target: 'pino-pretty',

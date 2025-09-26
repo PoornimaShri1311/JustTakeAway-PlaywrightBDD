@@ -1,7 +1,13 @@
 import { Page } from 'playwright';
 
+/**
+ * Supported ARIA roles for Playwright's getByRole method.
+ */
 export type AriaRole = Parameters<Page['getByRole']>[0];
 
+/**
+ * LocatorInfo describes different locator strategies for Playwright.
+ */
 export type LocatorInfo =
   | { type: 'css'; value: string }
   | { type: 'xpath'; value: string }
@@ -9,13 +15,17 @@ export type LocatorInfo =
   | { type: 'placeholder'; value: string }
   | { type: 'testID'; value: string }
   | { type: 'text'; value: string }
-  | { 
-    type: 'chained'; 
-    parent: LocatorInfo;  // parent locator
-    child: LocatorInfo;   // child locator
-  }; 
+  | {
+      type: 'chained';
+      /** Parent locator */
+      parent: LocatorInfo;
+      /** Child locator */
+      child: LocatorInfo;
+    };
 
-// Optional: Narrow role types to exactly what Playwright supports
+/**
+ * Optional: Narrow role types to exactly what Playwright supports.
+ */
 export type RoleType =
   | 'alert' | 'alertdialog' | 'application' | 'article' | 'banner'
   | 'blockquote' | 'button' | 'caption' | 'cell' | 'checkbox'

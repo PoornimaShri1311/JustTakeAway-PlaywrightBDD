@@ -1,3 +1,8 @@
+
+/**
+ * (Future Enhancement) Custom Cucumber hooks for advanced screenshot and browser teardown logic.
+ * Uncomment and adapt as needed for enhanced reporting or custom workflow.
+ */
 // import { After, Status } from '@cucumber/cucumber';
 // import { writeFileSync, existsSync, mkdirSync } from 'fs';
 // import { join } from 'path';
