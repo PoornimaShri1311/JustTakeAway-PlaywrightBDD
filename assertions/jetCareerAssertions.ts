@@ -33,14 +33,14 @@ export class jetCareerAssertions {
    */
   async assertResultsFromCountry(expectedCountry: string) {
     await this.jetCareerPage.waitForJobListings();
-    const locations = await this.jetCareerPage.getAllJobLocations1();
+      const locations = await this.jetCareerPage.getAllJobLocations();
 
     if (locations.length === 0) {
       throw new Error(`❌ No job listings found for "${expectedCountry}".`);
     }
 
     const countries = locations
-      .map(loc => {
+        .map((loc: string) => {
         const words = loc.trim().split(/\s+/);
         return words.length > 0 ? words[words.length - 1] : '';
       })

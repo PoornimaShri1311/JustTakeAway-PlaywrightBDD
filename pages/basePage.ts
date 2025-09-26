@@ -43,8 +43,11 @@ export default class basePage {
   }
 
   public async waitForVisible(locator: string, timeout = PLAYWRIGHT_TIMEOUTS.ACTION) {
-    const el = this.getLocator(locator);
-    await el.waitFor({ state: 'visible', timeout });
+    const elements = this.getLocator(locator);
+    const count = await elements.count();
+    for (let i = 0; i < count; i++) {
+      await elements.nth(i).waitFor({ state: 'visible', timeout });
+    }
   }
 
   public async expectVisible(locator: string, timeout = PLAYWRIGHT_TIMEOUTS.ACTION) {

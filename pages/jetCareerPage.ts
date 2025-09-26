@@ -82,27 +82,27 @@ export class jetCareerPage extends basePage {
     logger.info(` Counts match: ${salesCount}`);
   }
 
+  /**
+   * Returns all job locations as an array of strings, using the most robust locator available.
+   * This method merges the logic of the previous getAllJobLocations and getAllJobLocations1.
+   */
   async getAllJobLocations(): Promise<string[]> {
-    const rawTexts = await this.getAllTexts(jetCareerPageLocators.jobLocation);
-    return rawTexts.map(t => textUtils.removePrefix(t, jetCareerPageLocators.jobLocationPrefix));
-  
-  }
-
-  async getAllJobLocations1(): Promise<string[]> {
-    const count = await this.page.locator(jetCareerPageLocators.singleJobLocation).count();
-    const locations: string[] = [];
-
-    for (let i = 0; i < count; i++) {
-      const text = await this.page
-        .locator(jetCareerPageLocators.singleJobLocation)
-        .nth(i)
-        .innerText();
-
-      locations.push(text.replace(jetCareerPageLocators.jobLocationPrefix, '').trim());
+    // Prefer the more robust locator if available, fallback to the other
+    const locator = this.page.locator(jetCareerPageLocators.singleJobLocation);
+    const count = await locator.count();
+    if (count > 0) {
+      const locations: string[] = [];
+      for (let i = 0; i < count; i++) {
+        const text = await locator.nth(i).innerText();
+        locations.push(text.replace(jetCareerPageLocators.jobLocationPrefix, '').trim());
+      }
+      return locations;
+    } else {
+      // fallback to the old method if needed
+      const rawTexts = await this.getAllTexts(jetCareerPageLocators.jobLocation);
+      return rawTexts.map(t => textUtils.removePrefix(t, jetCareerPageLocators.jobLocationPrefix));
     }
-    return locations;
   }
-
   async waitForJobListings() {
     await this.waitForVisible(jetCareerPageLocators.jobListContainer);
     await this.waitForVisible(jetCareerPageLocators.clearAllButton);
